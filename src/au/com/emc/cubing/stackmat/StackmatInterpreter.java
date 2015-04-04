@@ -170,7 +170,7 @@ public class StackmatInterpreter {
         if (additionalSamplesNeeded > 0) {
             byte[] buffer = new byte[additionalSamplesNeeded];
             if (line.read(buffer, 0, buffer.length) > 0) {
-                for (int c = 0; c < buffer.length; ++c) { //we increment by 2 to mask out 1 channel
+                for (int c = 0; c < buffer.length; ++c) {
                     //little-endian encoding, bytes are in increasing order
                     currentSample = 0;
                     currentSample |= buffer[c]; //we don't mask with 255 so we don't lost the sign
