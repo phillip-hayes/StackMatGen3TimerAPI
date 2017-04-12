@@ -1,0 +1,42 @@
+// Simple Gradle file to build StackMatGen3TimerAPI.
+//
+// Gradle can auto-install itself. See https://docs.gradle.org/current/userguide/gradle_wrapper.html
+// Just call
+//
+//   ./gradlew build
+//
+// to build. The result JAR file will be in
+//
+//   build/libs/StackMatGen3TimerAPI.jar
+//
+// To run, call
+//
+//   java -jar build/libs/StackMatGen3TimerAPI.jar
+//
+// This assumes java is in the PATH. Check using
+//
+//   java -version
+//
+
+apply plugin: 'java'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src'] // Non-standard source folder. Default is src/main/java.
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'au.com.emc.cubing.stackmat.Main'
+    }
+}
+
+// Load/install the wrapper. This is done once and the result is
+// committed to version control. You do not need to call this.
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}
+

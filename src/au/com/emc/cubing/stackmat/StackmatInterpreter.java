@@ -1,7 +1,7 @@
 package au.com.emc.cubing.stackmat;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -75,7 +75,7 @@ public class StackmatInterpreter {
 
     private TargetDataLine line;
 
-    private StackmatState state = null;
+    // private StackmatState state = null;
 
     private boolean enabled = true;
     private int bitValueBetweenMessages = -1;
