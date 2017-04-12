@@ -23,3 +23,56 @@ For illustration, here is a plot of how "6.189" gets communicated as "S-006189-X
 
 Happy cubing!
  
+## Trying it out with the YuXin Timer
+
+1. You need Java.
+    - Any Java version should be OK (6,7,8).
+1. Open a command line (CMD.EXE, Bash)
+    - Change to some working directory
+    - Check Java installation: `java -version` - this should show that Java is available.
+    - Download this repo/branch: `git clone --branch YuxinDocAmendment https://github.com/m9aertner/StackMatGen3TimerAPI.git`
+    - Change into the downloaded code: `cd StackMatGen3TimerAPI`
+1. Build using [Gradle](http://gradle.org): `./gradlew build`
+    - This downloads Gradle (once),
+    - then builds the application's code and JAR file.
+    - Result is a JAR file: `build/libs/StackMatGen3TimerAPI.jar`
+1. Execution
+    - Connect the timer with to your computer's Mic port (pink 3.5 mm TRS)
+    - Execute: `java -jar build/libs/StackMatGen3TimerAPI.jar`
+    - This JAR is executable via `Main-Class` entry in `META-INF/MANIFEST.MF`
+    - It feels a bit odd, but *no parameters* are supported. The Mixer `#5` is hard-coded. That works for me, not sure what that *magic constant* means.
+    - The app initializes, then waits for data from the timer. Any data recieved is decoded and shown on each _change_.
+    - As an example, here's how I start the app, then start the timer (Power button), start a solve, stop at 1s577, reset back to 0m00s000, and finally press Enter to quit.
+
+```
+StackMatGen3TimerAPI> java -jar build\libs\StackMatGen3TimerAPI.jar
+12, 2017 9:06:47 PM au.com.emc.cubing.stackmat.StackmatManager start
+INFORMATION: Starting Stackmat gen 3 manager
+Apr 12, 2017 9:06:47 PM au.com.emc.cubing.stackmat.StackmatInterpreter initialize
+INFORMATION: Initialising stackmat gen 3 interpreter
+Apr 12, 2017 9:06:47 PM au.com.emc.cubing.stackmat.StackmatInterpreter doInBackground
+INFORMATION: Starting Stackmat background thread
+Apr 12, 2017 9:06:47 PM au.com.emc.cubing.stackmat.Main main
+INFORMATION: Press Enter to continue...
+0:00:000
+0:00:068
+0:00:197
+0:00:326
+0:00:455
+0:00:584
+0:00:713
+0:00:842
+0:00:971
+0:01:100
+0:01:220
+0:01:349
+0:01:478
+0:01:577
+0:00:000
+
+Apr 12, 2017 9:06:59 PM au.com.emc.cubing.stackmat.Main main
+INFORMATION: Stopping manager...
+Apr 12, 2017 9:06:59 PM au.com.emc.cubing.stackmat.StackmatManager stop
+INFORMATION: Stopping Stackmat gen 3 manager
+```
+
